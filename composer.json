@@ -1,0 +1,23 @@
+{
+    "name": "whopa/ldapsearch",
+    "description": "Paquete para búsqueda en directorios LDAP/Active Directory",
+    "authors": [
+        {
+            "name": "Whopa",
+            "email": "fede@whopa.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Whopa\\Ldapsearch\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
