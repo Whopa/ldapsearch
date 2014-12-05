@@ -7,7 +7,7 @@ Para instalar este paquete, agregar lo siguiente en el archivo composer.json
 
 ```sh
 require {
-    "whopa/ldapsearch": "1.0.*"
+    "whopa/ldapsearch": "dev-master"
 }
 ```
 
