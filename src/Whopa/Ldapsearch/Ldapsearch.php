@@ -90,6 +90,10 @@ class Ldapsearch {
 
         $entry = ldap_first_entry($this->connection, $items);
 
+        # Si no hay resultado, devuelvo vacío
+        if (!$entry)
+            return $arrItems;
+
         do {
             $attrs = ldap_get_attributes($this->connection, $entry);
             $items = [];
