@@ -63,8 +63,15 @@ class Ldapsearch {
      */
     protected function _bind($username, $password)
     {
-        $user = $username . '@' . $this->config->get('ldapsearch::domain');
+        $anonimo = $this->config->get('ldapsearch::anonimo', false);
 
+        if (!$anonimo)
+        {
+            if ($username == '' || $password == '')
+                return false;
+        }
+
+        $user = $username . '@' . $this->config->get('ldapsearch::domain');
         $res = @ldap_bind($this->connection, $user, $password);
 
         return $res;

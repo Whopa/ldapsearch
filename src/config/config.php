@@ -37,6 +37,11 @@ return [
     'admin_pass' => '',
 
     /**
+     * Permitir loguear con usuario anónimo
+     */
+    'anonimo' => false,
+
+    /**
      * Atributos que se desea obtener de las búsquedas
      */
     'attributes' => [
