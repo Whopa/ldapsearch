@@ -4,42 +4,42 @@ return [
     /**
      * Servidor LDAP
      */
-    'server' => '',
+    'server' => env('LDAPS_SERVER', ''),
 
     /**
      * Puerto para conectar al servidor LDAP
      */
-    'port' => '389',
+    'port' => env('LDAPS_PORT', '389'),
 
     /**
      * Dominio
      */
-    'domain' => 'whopa.net',
+    'domain' => env('LDAPS_DOMAIN', ''),
 
     /**
      * Base DN
      */
-    'basedn' => 'dc=whopa,dc=net',
+    'basedn' => env('LDAPS_BASEDN', ''),
 
     /**
      * Versión del Protocolo
      */
-    'protocol_version' => 3,
+    'protocol_version' => env('LDAPS_VERSION', 3),
 
     /**
      * Nombre de usuario del administrador LDAP
      */
-    'admin_user' => '',
+    'admin_user' => env('LDAPS_ADMIN_USER', ''),
 
     /**
      * Contraseña del administrador de LDAP
      */
-    'admin_pass' => '',
+    'admin_pass' => env('LDAPS_ADMIN_PASS', ''),
 
     /**
      * Permitir loguear con usuario anónimo
      */
-    'anonimo' => false,
+    'anonimo' => env('LDAPS_ANONIMO', false),
 
     /**
      * Atributos que se desea obtener de las búsquedas

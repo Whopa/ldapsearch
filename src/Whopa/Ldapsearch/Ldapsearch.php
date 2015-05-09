@@ -126,6 +126,24 @@ class Ldapsearch {
         return $this->_generateArray($res);
     }
 
+    protected function _updateData($userdn, $entry = [])
+    {
+        if (ldap_modify($this->connection, $userdn, $entry))
+            return true;
+        else
+            return false;
+    }
+
+    protected function _getUserDN($username)
+    {
+        $filter = '(sAMAccountName=' . $username . ')';
+        $userSearch = ldap_search($this->connection, $this->basedn, $filter);
+        $userEntry = ldap_first_entry($this->connection, $userSearch);
+        $userDn = ldap_get_dn($this->connection, $userEntry);
+
+        return $userDn;
+    }
+
     /**
      * Autentificar usuario
      *
@@ -184,4 +202,21 @@ class Ldapsearch {
 
         return $this->_search($filter);
     }
+
+    public function changePassword($username, $oldPassword, $newPassword)
+    {
+        $this->_bind($username, $oldPassword);
+        $userDN = $this->_getUserDN($username);
+
+        $newpass = '{SHA}' . base64_encode(pack('H*', sha1($newPassword)));
+        $entry = [
+            'userPassword' => $newpass
+        ];
+
+        $resultado = $this->_updateData($userDN, $entry);
+
+        return $resultado;
+    }
+
+
 } 
